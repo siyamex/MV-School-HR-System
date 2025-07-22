@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>403 - Access Forbidden | <?php echo APP_NAME; ?></title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+        }
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body class="h-full bg-gray-50 dark:bg-gray-900">
+    <div class="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+        <div class="sm:mx-auto sm:w-full sm:max-w-md">
+            <div class="text-center">
+                <!-- Animated 403 Icon -->
+                <div class="mx-auto w-32 h-32 gradient-bg rounded-full flex items-center justify-center mb-8 floating-animation shadow-2xl">
+                    <i class="fas fa-ban text-4xl text-white"></i>
+                </div>
+                
+                <!-- Error Message -->
+                <div class="space-y-6">
+                    <div>
+                        <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-2">
+                            Access Forbidden
+                        </h1>
+                        <div class="w-24 h-1 bg-gradient-to-r from-red-500 to-orange-600 mx-auto mb-6"></div>
+                    </div>
+                    
+                    <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-md mx-auto leading-relaxed">
+                        You don't have permission to access this resource. Please contact your administrator if you believe this is an error.
+                    </p>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="space-y-4">
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                        <a href="<?php echo APP_URL; ?>/" 
+                           class="inline-flex items-center px-6 py-3 text-base font-medium text-white bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            <i class="fas fa-home mr-2"></i>
+                            Back to Dashboard
+                        </a>
+                        
+                        <button onclick="history.back()" 
+                                class="inline-flex items-center px-6 py-3 text-base font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            <i class="fas fa-arrow-left mr-2"></i>
+                            Go Back
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Help Section -->
+                <div class="mt-12 p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 max-w-lg mx-auto">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center justify-center">
+                        <i class="fas fa-info-circle mr-2 text-blue-500"></i>
+                        Need Access?
+                    </h3>
+                    <div class="text-sm text-gray-600 dark:text-gray-400 space-y-2">
+                        <p>If you need access to this resource, please:</p>
+                        <ul class="list-disc list-inside space-y-1 mt-3">
+                            <li>Contact your system administrator</li>
+                            <li>Verify your user role permissions</li>
+                            <li>Ensure you're logged in with the correct account</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Footer Info -->
+                <div class="mt-8 text-center">
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                        Error Code: 403 | <?php echo APP_NAME; ?>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Auto dark mode detection
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</body>
+</html>
